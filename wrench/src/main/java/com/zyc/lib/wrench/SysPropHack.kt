@@ -1,3 +1,5 @@
+@file:SuppressLint("PrivateApi")
+
 package com.zyc.lib.wrench
 
 import android.annotation.SuppressLint
@@ -6,8 +8,7 @@ import android.text.TextUtils
 /**
  * @author devzyc
  */
-@SuppressLint("PrivateApi")
-fun getCliProp(
+fun stringCliProp(
     key: String,
     defaultValue: String
 ): String {
@@ -22,21 +23,27 @@ fun getCliProp(
     }
 }
 
-@SuppressLint("PrivateApi")
-fun getCliProp(
+fun intCliProp(
     key: String,
     defaultValue: Int
 ): Int {
-    return getCliProp(key = key, defaultValue = defaultValue.toString())
+    return stringCliProp(key, defaultValue.toString())
         .toInt()
 }
 
-@SuppressLint("PrivateApi")
-fun getCliProp(
+fun longCliProp(
+    key: String,
+    defaultValue: Long
+): Long {
+    return stringCliProp(key, defaultValue.toString())
+        .toLong()
+}
+
+fun booleanCliProp(
     key: String,
     defaultValue: Boolean
 ): Boolean {
-    return getCliProp(key = key, defaultValue = defaultValue.toString())
+    return stringCliProp(key, defaultValue.toString())
         .toBoolean()
 }
 
